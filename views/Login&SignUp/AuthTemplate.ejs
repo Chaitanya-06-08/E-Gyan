@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Login</title>
+    <link rel="stylesheet" href="css/AuthTemplate.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/Common.css" />
+  </head>
+  <body>
+    <%-include('../includes/header.ejs',{user : user})%>
+    <div class="container">
+        <%let type=authType%>
+        <%if(type=='Login'){%>
+            <%-include('./login.ejs')%>
+        <%}else{%>
+            <%-include('./signup.ejs')%>
+        <%}%>
+    </div>
+</body>
+</html>

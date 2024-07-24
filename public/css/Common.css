@@ -1,0 +1,32 @@
+.back-button {
+    position: absolute;
+    top: 115px;
+    left: 0;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    background-color: #007bff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 1rem;
+}
+
+.back-button:hover {
+    color: #0056b3;
+    background-color: #4098f5;
+}
+
+.drop-down{
+    animation: drop-down 1s;
+}
+@keyframes drop-down {
+    0%{
+        opacity: 0;
+        transform: translateY(-500px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

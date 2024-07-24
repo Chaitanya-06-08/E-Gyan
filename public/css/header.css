@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding: 0 2.5rem;
+    /* position: sticky;
+    top: 0; */
+    z-index: 10;
+    animation: drop-down 1s;
+}
+@keyframes drop-down {
+    0%{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.navigation{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+}
+.logo{
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   color: white;
+}
+.logo img{
+    width: 90px;
+    height: 100px;
+    border-radius: 30%;
+    margin: 0.15rem;
+}
+.navigation-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.links{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+.navigation-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.navigation-links li:last-child {
+    margin-right: 0;
+}
+
+.navigation-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navigation-links li a:hover {
+    text-decoration: underline;
+}
+
+.active{
+    background-color: #6cb3ff;
+    padding: 0.4rem;
+    border-radius: 10px;
+}
+
+.user-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 1rem;
+}
+.user-account {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1 1 0;
+    padding: 0.5rem;
+}
+/* .user-account:hover{
+    background-color: white;
+    border-radius: 10px;
+} */
+#accountButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.user-account img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.account-details {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0 ;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1;
+    width: 15rem;
+    color: black;
+    animation: scale-up 0.1s;
+}
+@keyframes scale-up {
+    0%{
+        opacity: 0;
+        transform: scale(0.4);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.logout-button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #0056b3;
+    color: white;
+}

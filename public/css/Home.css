@@ -1,0 +1,151 @@
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.outer-wrapper {
+  max-width: 85vw;
+  margin: 0.5rem auto;
+  height: fit-content;
+  display: flex;
+  gap: 1.5rem;
+}
+.hero1,
+.hero3 {
+  flex: 1 1 0;
+  margin: 0;
+  animation: fade-in 1.5s;
+}
+
+.hero2 {
+  flex: 2 1 0;
+}
+.container {
+  /* max-width: 450px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    background-color: #007bff;
+    width: 100%;
+    height: 100%;
+}
+
+.heading {
+  color: #007bff;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+.library-info {
+  display: flex;
+  align-items: center;
+}
+
+.library-info img {
+  width: 40rem;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 20px;
+  box-shadow: 6px 5px 1px 0 black;
+  animation: fade-in 1.5s;
+}
+
+@keyframes fade-in {
+  0%{
+    opacity: 0;
+    transform:  scale(0.7);
+  }
+  100%{
+    opacity: 1;
+    transform:  scale(1);
+  }
+}
+.library-info .description {
+  border-radius: 10px;
+  /* border: 2px solid black; */
+  font-size: 1.5rem;
+  padding: 1rem;
+  margin: 10px 0 0 0 ;
+  font-weight: bolder;
+  text-align: center;
+  animation: fade-in 1.5s;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.options li {
+  /* margin-bottom: 10px; */
+  width: 100%;
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.options li a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 20px 20px;
+  /* border-radius: 5px; */
+  text-align: center;
+}
+
+.options li a:hover {
+  background-color: #0056b3;
+}
+
+.hero3{
+  margin: 0 1rem;
+  padding: 0 1rem;
+}
+#scroll-container {
+  height: 100%;
+  width: 100%;
+  overflow-x: scroll;
+  padding: 0 2px;
+}
+.innerscroll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  animation: scroll 30s linear infinite;
+}
+.innerscroll ::-webkit-scrollbar-thumb{
+  display: hidden;
+}
+.element {
+  padding: 5px 10px;
+  border-bottom: 1px solid #ccc;
+  color: #007bff;
+  background-color: #fffafa;
+  border-radius: 10px;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+.hero3 > h3 {
+  font-family: sans-serif;
+  padding: 0 2px;
+  color: #007bff;
+}

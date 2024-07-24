@@ -1,0 +1,25 @@
+<img src="images/signup.jpg" alt="img">
+<div class="form-container">
+  <form id="signupForm" class="form" action="/signup" method="post">
+    <h2>Sign Up</h2>
+    <div class="input-group">
+      <label for="signupName">Name:</label>
+      <input type="text" id="signupName" name="signupName" required />
+    </div>
+    <div class="input-group">
+      <label for="signupEmail">Email:</label>
+      <input type="email" id="signupEmail" name="signupEmail" required />
+    </div>
+    <div class="input-group">
+      <label for="signupPassword">Password:</label>
+      <input
+        type="password"
+        id="signupPassword"
+        name="signupPassword"
+        required
+      />
+    </div>
+    <button type="submit">Sign Up</button>
+    <p>Already have an account? <a href="/login">Login</a></p>
+  </form>
+</div>

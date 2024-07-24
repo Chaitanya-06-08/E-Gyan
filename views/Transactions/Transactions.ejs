@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Transactions</title>
+    <link rel="stylesheet" href="css/Transactions.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/Common.css" />
+  </head>
+  <body>
+    <%-include('../includes/header.ejs',{user : user})%>
+    <div class="container drop-down">
+      <h1>Library Transactions</h1>
+      <%if(trans.length>0){%>
+      <table>
+        <thead>
+          <tr>
+            <th>Transaction ID</th>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>Book ID</th>
+            <th>Issue Date</th>
+            <th>Expected Return Date</th>
+            <th>Return Status</th>
+            <th>Fine Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%for(transaction of trans){%> <% let issueDate=
+          transaction.issueDate.getDate().toString()+"-"+(transaction.issueDate.getMonth()+1).toString()+"-"+transaction.issueDate.getFullYear().toString()%>
+          <%let returnDate=
+          transaction.returnDate.getDate().toString()+"-"+(transaction.returnDate.getMonth()+1).toString()+"-"+transaction.returnDate.getFullYear().toString()%>
+          <tr>
+            <td><%= transaction._id.toString()%></td>
+            <td><%= transaction.userID%></td>
+            <td><%= transaction.userName%></td>
+            <td><%= transaction.bookID%></td>
+            <td><%= issueDate%></td>
+            <td><%= returnDate%></td>
+            <td><%= transaction.returnStatus%></td>
+            <td>Rs. <%= transaction.fine%></td>
+          </tr>
+          <%}%> <%}else{%>
+          <h1>No Transaction were made.</h1>
+          <%}%>
+        </tbody>
+      </table>
+    </div>
+
+    <%- include('../includes/footer.ejs')%>
+    <script>
+      document
+        .getElementById("accountButton")
+        .addEventListener("click", function () {
+          var accountDetails = document.getElementById("accountDetails");
+          accountDetails.style.display =
+            accountDetails.style.display === "block" ? "none" : "block";
+        });
+    </script>
+  </body>
+</html>

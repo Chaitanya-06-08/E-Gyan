@@ -1,0 +1,24 @@
+<div class="hero1">
+  <div class="container">
+    <ul class="options">
+      <li><a href="/displayBooks">Display All Books</a></li>
+      <% if(user){%> <%if(user.type==='admin'){%>
+      <li><a href="/addBook">Add Book</a></li>
+      <li><a href="/removeBook">Remove Book</a></li>
+      <li><a href="/editBook">Update Book Details</a></li>
+      <%}else{%>
+      <li><a href="/borrowBook">Borrow Book</a></li>
+      <li><a href="/returnBook">Return Book</a></li>
+      <%}%>
+      <li>
+        <a href="/getTransactionsOfUser?id=<%= user.id%>&type=<%= user.type%>"
+          >Past Transactions</a
+        >
+      </li>
+      <%}%>
+    </ul>
+    <%if(!user){%>
+        <h3>Login to access more functionalities</h3>
+    <%}%>
+  </div>
+</div>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%pageTitle%></title>
+    <link rel="stylesheet" href="css/BorrowBook.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/Common.css" />
+  </head>
+  <body>
+    <%-include('../includes/header.ejs',{user : user})%>
+
+    <div class="outer-wrapper">
+      <div class="categories">
+        <div class="sidebar">
+          <h2>Filter Books</h2>
+          <div class="filter-options">
+            <input type="radio" id="all" name="category" value="all" checked />
+            <label for="all">All Books</label>
+            <input
+              type="radio"
+              id="computer science"
+              name="category"
+              value="computer science"
+            />
+            <label for="computer science">Computer Science</label>
+            <input type="radio" id="fiction" name="category" value="fiction" />
+            <label for="fiction">Fiction</label>
+          </div>
+        </div>
+      </div>
+      <div class="library">
+        <div class="container">
+          <h1>Library</h1>
+          <!-- <a href="/" class="back-button">&#8592;</a> -->
+          <div class="search-container">
+            <input
+              type="text"
+              id="searchInput"
+              oninput="searchBooks()"
+              placeholder="Search books..."
+            />
+          </div>
+          <div class="card-container" id="bookList">
+            <h1 id="msg">Sorry...No Books found for your search</h1>
+            <%if(books.length>0){%> <% for(book of books){ %>
+            <div class="card" data-category="<%= book.category%>">
+              <img src="<%= book.image%>" alt="Book Cover" />
+              <div class="card-content">
+                <h2>Title: <%=book.title%></h2>
+                <p class="author">Author: <%=book.author%></p>
+                <p>Description: <%=book.description%></p>
+                <p class="publisher">Publisher: <%=book.publisher%></p>
+                <%if(buttonContent!='Edit'){%>
+                  <p>
+                    Status : <% if(book.status==='available'){%> available
+                    <%}else{%> Borrowed By Someone <%}%>
+                  </p>
+                <%}%> <%if((book.status==='available'&&buttonContent)||(buttonContent=='Edit')){%>
+                <form action="<%= path%>" method="<%=method%>">
+                  <button type="submit" class="borrow-button">
+                    <%=buttonContent%>
+                  </button>
+                  <input type="hidden" name="bookId" value="<%= book.id%>" />
+                  <input type="hidden" name="edit" value="<%= edit%>" />
+                </form>
+                <%}%>
+              </div>
+            </div>
+            <%}%> <%}%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('../includes/footer.ejs')%>
+
+    <script>
+      document
+        .getElementById("accountButton")
+        .addEventListener("click", function () {
+          var accountDetails = document.getElementById("accountDetails");
+          accountDetails.style.display =
+            accountDetails.style.display === "block" ? "none" : "block";
+        });
+      function searchBooks() {
+        var input = document.getElementById("searchInput").value.toLowerCase();
+        var cards = document.querySelectorAll(".card");
+
+        let len = 0;
+        cards.forEach(function (card) {
+          var title = card.querySelector("h2").textContent.toLowerCase();
+          var author = card.querySelector(".author").textContent.toLowerCase();
+          var publisher = card
+            .querySelector(".publisher")
+            .textContent.toLowerCase();
+
+          if (
+            title.includes(input) ||
+            author.includes(input) ||
+            publisher.includes(input)
+          ) {
+            card.style.display = "flex";
+            len++;
+          } else {
+            card.style.display = "none";
+          }
+        });
+        if (len == 0) {
+          document.getElementById("msg").display = "block";
+        } else {
+          document.getElementById("msg").display = "none";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all radio buttons for filtering
+        var filterOptions = document.querySelectorAll('input[name="category"]');
+
+        // Add event listener to each radio button
+        filterOptions.forEach(function (option) {
+          option.addEventListener("change", function () {
+            var selectedCategory = this.value;
+            filterBooks(selectedCategory);
+          });
+        });
+      });
+
+      function filterBooks(category) {
+        // Get all book cards
+        var bookCards = document.getElementsByClassName("card");
+
+        // Show or hide book cards based on the selected category
+        for (card of bookCards) {
+          var bookCategory = card.dataset.category;
+          if (category === "all" || bookCategory === category) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

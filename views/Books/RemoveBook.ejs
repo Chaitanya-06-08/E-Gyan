@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove Book</title>
+    <link rel="stylesheet" href="css/RemoveBook.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/Common.css" />
+  </head>
+  <body>
+    <%-include('../includes/header.ejs',{user : user})%>
+    <div class="container drop-down">
+      <img src="images/removeBook.png" alt="" />
+      <div class="removeBookForm">
+        <h2>Remove Book</h2>
+        <!-- <a href="/" class="back-button">&#8592;</a> -->
+        <form id="removeForm" action="/removeBook" method="post">
+          <div class="form-group">
+            <label for="bookId">Book ID:</label>
+            <input type="text" id="bookId" name="bookId" required />
+          </div>
+          <button type="submit">Remove Book</button>
+        </form>
+      </div>
+    </div>
+
+    <%- include('../includes/footer.ejs')%>
+    <script>
+      document
+        .getElementById("accountButton")
+        .addEventListener("click", function () {
+          var accountDetails = document.getElementById("accountDetails");
+          accountDetails.style.display =
+            accountDetails.style.display === "block" ? "none" : "block";
+        });
+    </script>
+  </body>
+</html>

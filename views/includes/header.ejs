@@ -1,0 +1,57 @@
+<header>
+  <nav class="navigation">
+    <div class="logo">
+      <img src="images/logo_new.png" alt="logo" />
+      <h1 style="color: white; margin-left: 10px">E-Gyan</h1>
+    </div>
+    <ul class="navigation-links">
+      <div class="links">
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="/displayBooks">Books</a>
+        </li>
+        <% if(user){%> <%if(user.type==='admin'){%>
+        <li><a href="/addBook">Add Book</a></li>
+        <li><a href="/removeBook">Remove Book</a></li>
+        <li><a href="/editBook">Update Book Details</a></li>
+        <li><a href="/issueBook">Issue Book</a></li>
+        <li><a href="/returnBook">Accept Book Return</a></li>
+        <%}else{%>
+        <!-- <li><a href="/borrowBook">Borrow Book</a></li>
+        <li><a href="/returnBook">Return Book</a></li> -->
+        <%}%>
+        <li>
+          <a href="/getTransactionsOfUser?id=<%= user.id%>&type=<%= user.type%>"
+            >Past Transactions</a
+          >
+        </li>
+        <%}%>
+      </div>
+      <div class="user-container">
+        <div class="user-account">
+          <%if(user){%>
+          <button id="accountButton">
+            <img src="images/user-icon.png" alt="User Account" />
+          </button>
+          <div class="account-details" id="accountDetails">
+            <%if(user.type!='admin'){%>
+            <p>Membership ID : <%=user.id%></p>
+            <%}%>
+            <p>Name : <%= user.name%></p>
+            <p>Email : <%= user.email%></p>
+            <p>User Type : <%= user.type%></p>
+            <a href="/logout" class="logout-button">Logout</a>
+          </div>
+          <%}else{%>
+          <li>
+            <a href="/login">Login</a>
+          </li>
+          <li>
+            <a href="/signup">Sign Up</a>
+          </li>
+          <%}%>
+        </div>
+      </div>
+    </ul>
+  </nav>
+</header>

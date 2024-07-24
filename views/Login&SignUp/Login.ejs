@@ -1,0 +1,31 @@
+<img src="images/login.jpg" alt="img" />
+<div class="form-container">
+  <form id="loginForm" class="form" action="/login" method="post">
+    <h2>Login</h2>
+    <div class="input-group">
+      <label for="loginEmail">Email:</label>
+      <input type="email" id="loginEmail" name="loginEmail" required />
+    </div>
+    <div class="input-group">
+      <label for="loginPassword">Password:</label>
+      <input type="password" id="loginPassword" name="loginPassword" required />
+    </div>
+    <div class="input-group">
+      <label>User Type:</label>
+      <div class="radio-group">
+        <input
+          type="radio"
+          id="student"
+          name="userType"
+          value="student"
+          checked
+        />
+        <label for="student">Student</label>
+        <input type="radio" id="admin" name="userType" value="admin" />
+        <label for="admin">Admin</label>
+      </div>
+    </div>
+    <button type="submit">Login</button>
+    <p>Don't have an account? <a href="/signup">Sign up</a></p>
+  </form>
+</div>

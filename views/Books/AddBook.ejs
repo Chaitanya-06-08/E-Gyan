@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= pageTitle%></title>
+    <link rel="stylesheet" href="css/AddBook.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/Common.css" />
+  </head>
+  <body>
+    <%-include('../includes/header.ejs',{user : user})%>
+    <div class="container drop-down">
+      <h1><%=pageTitle%></h1>
+      <!-- <a href="/" class="back-button">&#8592;</a> -->
+      <form
+        id="addBookForm"
+        onsubmit="return validateForm()"
+        action="<%=path%>"
+        method="post"
+      >
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value="<%=bookData.title%>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="author">Author:</label>
+          <input
+            type="text"
+            id="author"
+            name="author"
+            value="<%=bookData.author%>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" rows="4" required>
+          <%=bookData.description%>
+        </textarea
+          >
+        </div>
+        <div class="form-group">
+          <label for="publisher">Publisher:</label>
+          <input
+            type="text"
+            id="publisher"
+            name="publisher"
+            value="<%=bookData.publisher%>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL:</label>
+          <input
+            type="url"
+            id="image"
+            name="image"
+            value="<%=bookData.image%>"
+            required
+          />
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <input
+            type="text"
+            id="category"
+            name="category"
+            value="<%=bookData.category%>"
+            required
+          />
+        </div>
+        </div>
+        <button type="submit"><%= buttonContent%></button>
+      </form>
+    </div>
+    <%- include('../includes/footer.ejs')%>
+    <script>
+      document
+        .getElementById("accountButton")
+        .addEventListener("click", function () {
+          var accountDetails = document.getElementById("accountDetails");
+          accountDetails.style.display =
+            accountDetails.style.display === "block" ? "none" : "block";
+        });
+
+      function validateForm() {
+        var title = document.getElementById("title").value;
+        var author = document.getElementById("author").value;
+        var description = document.getElementById("description").value;
+        var publisher = document.getElementById("publisher").value;
+        var image = document.getElementById("image").value;
+
+        if (
+          title.trim() === "" ||
+          author.trim() === "" ||
+          description.trim() === "" ||
+          publisher.trim() === "" ||
+          image.trim() === ""
+        ) {
+          alert("All fields are required");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>
