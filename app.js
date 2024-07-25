@@ -12,11 +12,10 @@ app.use(
   })
 );
 
-
 const loginRoute = require("./routes/auth");
 const homeRoute = require("./routes/Home");
 const booksRoute = require("./routes/Books");
-const transactionRoute=require('./routes/Transactions')
+const transactionRoute = require("./routes/Transactions");
 const errorRoute = require("./routes/Error");
 
 app.set("view engine", "ejs");
@@ -30,9 +29,9 @@ app.use(express.static(path.join(homeDir, "public")));
 app.use(loginRoute);
 app.use(homeRoute);
 app.use(booksRoute);
-app.use(transactionRoute)
+app.use(transactionRoute);
 app.use(errorRoute);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server started");
 });
